@@ -40,6 +40,8 @@
             background: #50b4d5;
             border: 1px solid #333;
             box-sizing: border-box;
+            overflow-y: scroll;
+            overflow-x: hidden;
         }
 
         .itemDiv, .itemHead, .detailDiv {
@@ -52,7 +54,9 @@
             line-height: 50px;
         }
 
-
+        .detailDiv {
+            height:150px;
+        }
 
         .itemHead {
             background: #006484;
@@ -92,6 +96,8 @@
         <div class="itemDiv">item 18</div>
         <div class="itemDiv">item 19</div>
         <div class="itemDiv">item 20</div>
+        <div class="itemDiv">item 21</div>
+        <div class="itemDiv">item 22</div>
     </div>
 
     <div id="detailBox" class="useWebkit">
@@ -102,6 +108,9 @@
         <div class="detailDiv">detail 4</div>
         <div class="detailDiv">detail 5</div>
         <div class="detailDiv">detail 6</div>
+        <div class="detailDiv">detail 7</div>
+        <div class="detailDiv">detail 8</div>
+        <div class="detailDiv">detail 9</div>
     </div>
 
     <script>
@@ -109,21 +118,21 @@
             var w = screen.width;
             $("#detailBox").hide();
             var time = 0.5;
-            TweenMax.set($("#detailBox"), { x: w });
+            TweenMax.set($("#detailBox"), { x: "100%" });
             $("#detailBtn").on("click", function () {
                 $("#detailBox").show();
                 TweenMax.to($("#contentBox"), time, {
-                    x: -w, ease: Strong.easeInOut, onComplete: function () {
+                    x: "-100%", ease: Strong.easeInOut, onComplete: function () {
                         $("#contentBox").hide();
                     }
                 });
-                TweenMax.to($("#detailBox"), time, { x: 0, ease: Strong.easeInOut });
+                TweenMax.to($("#detailBox"), time, { x: "0%", ease: Strong.easeInOut });
             });
             $("#backBtn").on("click", function () {
                 $("#contentBox").show();
-                TweenMax.to($("#contentBox"), time, { x: 0, ease: Strong.easeInOut });
+                TweenMax.to($("#contentBox"), time, { x: "0%", ease: Strong.easeInOut });
                 TweenMax.to($("#detailBox"), time, {
-                    x: w, ease: Strong.easeInOut, onComplete: function () {
+                    x: "100%", ease: Strong.easeInOut, onComplete: function () {
                         $("#detailBox").hide();
                     }
                 });

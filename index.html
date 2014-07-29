@@ -106,22 +106,23 @@
 
     <script>
         $(document).ready(function () {
-            var w = screen.availWidth;
+            var w = screen.width;
             $("#detailBox").hide();
+            var time = 0.5;
             TweenMax.set($("#detailBox"), { x: w });
             $("#detailBtn").on("click", function () {
                 $("#detailBox").show();
-                TweenMax.to($("#contentBox"), 1, {
+                TweenMax.to($("#contentBox"), time, {
                     x: -w, ease: Strong.easeInOut, onComplete: function () {
                         $("#contentBox").hide();
                     }
                 });
-                TweenMax.to($("#detailBox"), 1, { x: 0, ease: Strong.easeInOut });
+                TweenMax.to($("#detailBox"), time, { x: 0, ease: Strong.easeInOut });
             });
             $("#backBtn").on("click", function () {
                 $("#contentBox").show();
-                TweenMax.to($("#contentBox"), 1, { x: 0, ease: Strong.easeInOut });
-                TweenMax.to($("#detailBox"), 1, {
+                TweenMax.to($("#contentBox"), time, { x: 0, ease: Strong.easeInOut });
+                TweenMax.to($("#detailBox"), time, {
                     x: w, ease: Strong.easeInOut, onComplete: function () {
                         $("#detailBox").hide();
                     }

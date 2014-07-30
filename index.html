@@ -121,13 +121,15 @@
 
     <script>
 
-        $(document).ready(function () {
-
-            $.mobile.changePage("#pageid", {
-                transition: "none",
-                reverse: true,
-                changeHash: true
+        $(document).bind("mobileinit", function () {
+            $.extend($.mobile, {
+                defaultPageTransition: 'none'
             });
+            $.mobile.defaultPageTransition = 'none';
+            $.mobile.defaultDialogTransition = 'none';
+        });
+
+        $(document).ready(function () {
 
             var w = window.innerWidth;
             $("#itemDiv1").text("w: " + screen.width + " ava: " + screen.availWidth + " win: " + window.innerWidth);

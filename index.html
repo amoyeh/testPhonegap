@@ -122,6 +122,13 @@
     <script>
 
         $(document).ready(function () {
+
+            $.mobile.changePage("#pageid", {
+                transition: "none",
+                reverse: true,
+                changeHash: true
+            });
+
             var w = window.innerWidth;
             $("#itemDiv1").text("w: " + screen.width + " ava: " + screen.availWidth + " win: " + window.innerWidth);
             var time = 0;

@@ -14,6 +14,7 @@
             margin: 0px;
             color: #222;
             font-family: sans-serif;
+            overflow:hidden;
         }
 
         .useWebkit {
@@ -121,24 +122,17 @@
         $(document).ready(function () {
             var w = window.innerWidth;
             $("#itemDiv1").text("w: " + screen.width + " ava: " + screen.availWidth + " win: " + window.innerWidth);
-            $("#detailBox").hide();
-            var time = 0.3;
+            var time = 300;
             TweenMax.set($("#detailBox"), { x: w });
             //left : using translate(x, y) or translate3d(x, y, z)
             //top : using translate(x, y) or translate3d(x, y, z) //opacity //width //height
             $("#detailBtn").on("click", function () {
-                $("#detailBox").show();
-                $("#contentBox").animate({ left: -w }, 500, function () {
-                    $("#contentBox").hide();
-                });
-                $("#detailBox").animate({ left: 0 }, 500);
+                $("#contentBox").animate({ left: -w }, time);
+                $("#detailBox").animate({ left: 0 }, time);
             });
             $("#backBtn").on("click", function () {
-                $("#contentBox").show();
-                $("#contentBox").animate({ left: 0 }, 500);
-                $("#detailBox").animate({ left: w }, 500, function () {
-                    $("#detailBox").hide();
-                });
+                $("#contentBox").animate({ left: 0 }, time);
+                $("#detailBox").animate({ left: w }, time);
             });
         });
     </script>

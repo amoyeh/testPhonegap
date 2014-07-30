@@ -16,6 +16,8 @@
             color: #222;
             font-family: sans-serif;
             overflow: hidden;
+            perspective: 600px;
+            transform-style: preserve-3d;
         }
 
         .useWebkit {
@@ -35,25 +37,27 @@
 
         .contentOut {
             /* transition: <property> <duration> <timing-function> <delay>; */
-            -moz-transform: translate3d(-320px,0,0);
-            -webkit-transform: translate3d(-320px,0,0);
-            transform: translate3d(-320px,0,0);
+            -moz-transform: translate3d(-320px,0,0) rotateY(90deg);
+            -webkit-transform: translate3d(-320px,0,0) rotateY(90deg);
+            transform: translate3d(-320px,0,0) rotateY(90deg);
             -moz-transition: all 0.3s ease-in;
             -webkit-transition: all 0.3s ease-in;
             -ms-transition: all 0.3s ease-in;
             transition: all 0.3s ease-in;
         }
+
         .contentOutRight {
             /* transition: <property> <duration> <timing-function> <delay>; */
-            -moz-transform: translate3d(320px,0,0);
-            -webkit-transform: translate3d(320px,0,0);
-            transform: translate3d(320px,0,0);
+            -moz-transform: translate3d(320px,0,0) rotateY(-90deg);
+            -webkit-transform: translate3d(320px,0,0) rotateY(-90deg);
+            transform: translate3d(320px,0,0) rotateY(-90deg);
             -moz-transition: all 0.3s ease-in;
             -webkit-transition: all 0.3s ease-in;
             -ms-transition: all 0.3s ease-in;
             transition: all 0.3s ease-in;
         }
-        .contentIn{
+
+        .contentIn {
             -moz-transform: translate3d(0px,0,0);
             -webkit-transform: translate3d(0px,0,0);
             transform: translate3d(0px,0,0);
@@ -172,8 +176,8 @@
                 $("#contentBox").removeClass("contentOut");
                 $("#detailBox").addClass("contentOutRight");
                 $("#detailBox").removeClass("contentIn");
-            //    $("#contentBox").animate({ left: 0 }, time);
-            //    $("#detailBox").animate({ left: w }, time);
+                $("#contentBox").animate({ left: 0 }, time);
+                $("#detailBox").animate({ left: w }, time);
             });
         });
     </script>

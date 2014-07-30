@@ -14,7 +14,7 @@
             margin: 0px;
             color: #222;
             font-family: sans-serif;
-            overflow:hidden;
+            overflow: hidden;
         }
 
         .useWebkit {
@@ -119,6 +119,11 @@
     </div>
 
     <script>
+
+        document.addEventListener('touchmove', function (e) {
+            e.preventDefault();
+        });
+
         $(document).ready(function () {
             var w = window.innerWidth;
             $("#itemDiv1").text("w: " + screen.width + " ava: " + screen.availWidth + " win: " + window.innerWidth);

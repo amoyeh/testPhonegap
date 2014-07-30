@@ -119,10 +119,10 @@
 
     <script>
         $(document).ready(function () {
-            var w = screen.width;
+            var w = window.innerWidth;
             $("#itemDiv1").text("w: " + screen.width + " ava: " + screen.availWidth + " win: " + window.innerWidth);
             $("#detailBox").hide();
-            var time = 0.5;
+            var time = 0.3;
             TweenMax.set($("#detailBox"), { x: w });
             //left : using translate(x, y) or translate3d(x, y, z)
             //top : using translate(x, y) or translate3d(x, y, z) //opacity //width //height

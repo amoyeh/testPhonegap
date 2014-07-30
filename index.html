@@ -19,13 +19,6 @@
         }
 
         .useWebkit {
-            -webkit-transform:  translate(0px,0px);
-            -moz-transform:  translate(0px,0px);
-            -ms-transform:  translate(0px,0px);
-            -o-transform:  translate(0px,0px);
-            transform:  translate(0px,0px);
-            -webkit-backface-visibility: hidden;
-            -moz-backface-visibility: hidden;
             backface-visibility: hidden;
         }
 
@@ -38,6 +31,36 @@
             background: #50b4d5;
             border: 1px solid #333;
             box-sizing: border-box;
+        }
+
+        .contentOut {
+            /* transition: <property> <duration> <timing-function> <delay>; */
+            -moz-transform: translate3d(-320px,0,0);
+            -webkit-transform: translate3d(-320px,0,0);
+            transform: translate3d(-320px,0,0);
+            -moz-transition: all 0.3s ease-in;
+            -webkit-transition: all 0.3s ease-in;
+            -ms-transition: all 0.3s ease-in;
+            transition: all 0.3s ease-in;
+        }
+        .contentOutRight {
+            /* transition: <property> <duration> <timing-function> <delay>; */
+            -moz-transform: translate3d(320px,0,0);
+            -webkit-transform: translate3d(320px,0,0);
+            transform: translate3d(320px,0,0);
+            -moz-transition: all 0.3s ease-in;
+            -webkit-transition: all 0.3s ease-in;
+            -ms-transition: all 0.3s ease-in;
+            transition: all 0.3s ease-in;
+        }
+        .contentIn{
+            -moz-transform: translate3d(0px,0,0);
+            -webkit-transform: translate3d(0px,0,0);
+            transform: translate3d(0px,0,0);
+            -moz-transition: all 0.3s ease-in-out;
+            -webkit-transition: all 0.3s ease-in-out;
+            -ms-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
         }
 
         #detailBox {
@@ -133,17 +156,24 @@
         $(document).ready(function () {
             var w = window.innerWidth;
             $("#itemDiv1").text("w: " + screen.width + " ava: " + screen.availWidth + " win: " + window.innerWidth);
-            var time = 300;
-            $("#detailBox").css({ "left": w + "px" });
-            //left : using translate(x, y) or translate3d(x, y, z)
-            //top : using translate(x, y) or translate3d(x, y, z) //opacity //width //height
+
+            ////left : using translate(x, y) or translate3d(x, y, z)
+            ////top : using translate(x, y) or translate3d(x, y, z) //opacity //width //height
             $("#detailBtn").on("click", function () {
-                $("#contentBox").animate({ left: -w }, time);
-                $("#detailBox").animate({ left: 0 }, time);
+                //    $("#contentBox").animate({ left: -w }, time);
+                //    $("#detailBox").animate({ left: 0 }, time);
+                $("#contentBox").removeClass("contentIn");
+                $("#contentBox").addClass("contentOut");
+                $("#detailBox").removeClass("contentOutRight");
+                $("#detailBox").addClass("contentIn");
             });
             $("#backBtn").on("click", function () {
-                $("#contentBox").animate({ left: 0 }, time);
-                $("#detailBox").animate({ left: w }, time);
+                $("#contentBox").addClass("contentIn");
+                $("#contentBox").removeClass("contentOut");
+                $("#detailBox").addClass("contentOutRight");
+                $("#detailBox").removeClass("contentIn");
+            //    $("#contentBox").animate({ left: 0 }, time);
+            //    $("#detailBox").animate({ left: w }, time);
             });
         });
     </script>

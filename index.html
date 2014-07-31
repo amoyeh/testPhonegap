@@ -3,10 +3,7 @@
 <head>
     <title></title>
     <script type="text/javascript" src="jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="jquery.animate-enhanced.min.js"></script>
     <meta name="viewport" content="width=device-width, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <style type="text/css">
         body, html {
             width: 100%;
@@ -16,7 +13,7 @@
             color: #222;
             font-family: sans-serif;
             overflow: hidden;
-            perspective: 1000px;
+            perspective: 600px;
             transform-style: preserve-3d;
         }
 
@@ -37,18 +34,33 @@
 
         .contentOut {
             /* transition: <property> <duration> <timing-function> <delay>; */
+            -moz-transform: translate3d(-360px,0,0) rotateY(90deg);
+            -webkit-transform: translate3d(-360px,0,0) rotateY(90deg);
             transform: translate3d(-360px,0,0) rotateY(90deg);
+            -moz-transition: all 0.3s ease-in;
+            -webkit-transition: all 0.3s ease-in;
+            -ms-transition: all 0.3s ease-in;
             transition: all 0.3s ease-in;
         }
 
         .contentOutRight {
             /* transition: <property> <duration> <timing-function> <delay>; */
+            -moz-transform: translate3d(360px,0,0) rotateY(-90deg);
+            -webkit-transform: translate3d(360px,0,0) rotateY(-90deg);
             transform: translate3d(360px,0,0) rotateY(-90deg);
+            -moz-transition: all 0.3s ease-in;
+            -webkit-transition: all 0.3s ease-in;
+            -ms-transition: all 0.3s ease-in;
             transition: all 0.3s ease-in;
         }
 
         .contentIn {
+            -moz-transform: translate3d(0px,0,0);
+            -webkit-transform: translate3d(0px,0,0);
             transform: translate3d(0px,0,0);
+            -moz-transition: all 0.3s ease-in-out;
+            -webkit-transition: all 0.3s ease-in-out;
+            -ms-transition: all 0.3s ease-in-out;
             transition: all 0.3s ease-in-out;
         }
 
@@ -149,8 +161,6 @@
             ////left : using translate(x, y) or translate3d(x, y, z)
             ////top : using translate(x, y) or translate3d(x, y, z) //opacity //width //height
             $("#detailBtn").on("click", function () {
-                //    $("#contentBox").animate({ left: -w }, time);
-                //    $("#detailBox").animate({ left: 0 }, time);
                 $("#contentBox").removeClass("contentIn");
                 $("#contentBox").addClass("contentOut");
                 $("#detailBox").removeClass("contentOutRight");
@@ -161,8 +171,7 @@
                 $("#contentBox").removeClass("contentOut");
                 $("#detailBox").addClass("contentOutRight");
                 $("#detailBox").removeClass("contentIn");
-                $("#contentBox").animate({ left: 0 }, time);
-                $("#detailBox").animate({ left: w }, time);
+                console.log("backBtnbackBtnbackBtn");
             });
         });
     </script>

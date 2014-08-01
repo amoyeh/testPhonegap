@@ -3,6 +3,8 @@
 <head>
     <title></title>
     <script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="TweenMax.min.js"></script>
+
     <meta name="viewport" content="width=device-width, user-scalable=no">
     <style type="text/css">
         body, html {
@@ -84,12 +86,13 @@
             padding-top: 10px;
             font-size: 20px;
             line-height: 50px;
-            position:relative;
+            position: relative;
         }
-        .itemDiv img{
-            position:absolute;
-            right:10px;
-        }
+
+            .itemDiv img {
+                position: absolute;
+                right: 10px;
+            }
 
         .detailDiv {
             height: 150px;
@@ -160,22 +163,26 @@
 
         $(document).ready(function () {
             var w = window.innerWidth;
+            var time = 0.3;
             //$("#itemDiv1").text("w: " + screen.width + " ava: " + screen.availWidth + " win: " + window.innerWidth);
-
             ////left : using translate(x, y) or translate3d(x, y, z)
             ////top : using translate(x, y) or translate3d(x, y, z) //opacity //width //height
+            TweenMax.set($("#detailBox"), { "x": w + "px" });
             $("#detailBtn").on("click", function () {
-                $("#contentBox").removeClass("contentIn");
-                $("#contentBox").addClass("contentOut");
-                $("#detailBox").removeClass("contentOutRight");
-                $("#detailBox").addClass("contentIn");
+                TweenMax.to($("#contentBox"), time, { "x": "-" + w + "px" });
+                TweenMax.to($("#detailBox"), time, { "x": "0px" });
+                //$("#contentBox").removeClass("contentIn");
+                //$("#contentBox").addClass("contentOut");
+                //$("#detailBox").removeClass("contentOutRight");
+                //$("#detailBox").addClass("contentIn");
             });
             $("#backBtn").on("click", function () {
-                $("#contentBox").addClass("contentIn");
-                $("#contentBox").removeClass("contentOut");
-                $("#detailBox").addClass("contentOutRight");
-                $("#detailBox").removeClass("contentIn");
-                console.log("backBtnbackBtnbackBtn");
+                TweenMax.to($("#detailBox"), time, { "x":  w + "px" });
+                TweenMax.to($("#contentBox"), time, { "x": "0px" });
+                //$("#contentBox").addClass("contentIn");
+                //$("#contentBox").removeClass("contentOut");
+                //$("#detailBox").addClass("contentOutRight");
+                //$("#detailBox").removeClass("contentIn");
             });
         });
     </script>
